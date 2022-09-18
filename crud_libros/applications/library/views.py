@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Book
+
 
 def index(request):
     return render(request, 'pages/index.html')
@@ -8,7 +9,8 @@ def aboutUs(request):  #Función que nos retorna la pagina html de acerca de nos
     return render(request, 'pages/about_us.html')
 
 def books(request):
-    return render(request, 'books/books.html')
+    books = Book.objects.all()
+    return render(request, 'books/books.html', {'books': books} )
 
 def createBook(request):
     return render(request, 'books/create.html')
