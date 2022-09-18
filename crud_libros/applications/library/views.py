@@ -9,3 +9,6 @@ def aboutUs(request):  #Función que nos retorna la pagina html de acerca de nos
 
 def books(request):
     return render(request, 'books/books.html')
+
+def createBook(request):
+    return render(request, 'books/create.html')
