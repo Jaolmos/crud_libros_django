@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Book
+from .forms import BookForm
 
 
 def index(request):
@@ -13,7 +14,12 @@ def books(request):
     return render(request, 'books/books.html', {'books': books} )
 
 def createBook(request):
-    return render(request, 'books/create.html')
+    form = BookForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+        return redirect('books')
+
+    return render(request, 'books/create.html', {'form': form})
 
 def editBook(request):
     return render(request, 'books/edit.html') 
