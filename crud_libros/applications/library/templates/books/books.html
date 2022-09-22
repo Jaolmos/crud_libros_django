@@ -28,13 +28,13 @@
                         <td>{{ book.id}}</td>
                         <td>{{ book.title}}</td>
                         <td>
-                            <img src="{{ book.image.url}}" height="100" alt="{{ book.title}}"
+                            <img src="{{ book.image.url}}" height="100" alt="{{ book.title}}">
 
                         </td>
                         <td>{{ book.description}}?</td>
                         <td>
                             <a name="" id="" class="btn btn-info" href="{% url 'edit_book' %}" role="button">Editar</a> |
-                            <a name="" id="" class="btn btn-danger" href="#" role="button">Borrar</a>
+                            <a name="" id="" class="btn btn-danger" href="{% url 'delete_book' book.id %}" role="button">Borrar</a>
                         </td>
                     </tr>
                     {% endfor %}
