@@ -33,7 +33,7 @@
                         </td>
                         <td>{{ book.description}}?</td>
                         <td>
-                            <a name="" id="" class="btn btn-info" href="{% url 'edit_book' %}" role="button">Editar</a> |
+                            <a name="" id="" class="btn btn-info" href="{% url 'edit_book' book.id %}" role="button">Editar</a> |
                             <a name="" id="" class="btn btn-danger" href="{% url 'delete_book' book.id %}" role="button">Borrar</a>
                         </td>
                     </tr>

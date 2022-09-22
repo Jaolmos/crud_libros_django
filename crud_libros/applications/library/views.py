@@ -22,7 +22,9 @@ def createBook(request):
     return render(request, 'books/create.html', {'form': form})
 
 def editBook(request):
-    return render(request, 'books/edit.html') 
+    book = Book.objects.get(id=id)
+    form = BookForm(request.POST or None, request.FILES or None, instance=book)
+    return render(request, 'books/edit.html', {'form': form}) 
 
 def delete(request, id):
     book = Book.objects.get(id=id)
