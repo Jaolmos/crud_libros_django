@@ -21,9 +21,12 @@ def createBook(request):
 
     return render(request, 'books/create.html', {'form': form})
 
-def editBook(request, id):
+def editBook(request,id):
     book = Book.objects.get(id=id)
     form = BookForm(request.POST or None, request.FILES or None, instance=book)
+    if form.is_valid()and request.method == 'POST':
+       form.save()
+       return redirect('books') 
     return render(request, 'books/edit.html', {'form': form}) 
 
 def delete(request, id):
